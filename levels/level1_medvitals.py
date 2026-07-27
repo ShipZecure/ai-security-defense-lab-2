@@ -113,6 +113,7 @@ def render_level1(user, supabase_client):
                 st.session_state.l1_completed = True
         except Exception:
             pass
+            
 
     st.markdown(
         '<div style="background:linear-gradient(135deg,#0B7B6E,#064E3B);border-radius:10px;padding:20px 28px;margin-bottom:24px;">'
