@@ -187,8 +187,29 @@ def render_level1(user, supabase_client):
         )
     with tab2:
         st.code(
-            '{\n  "Version": "2012-10-17",\n  "Statement": [\n    {\n      "Sid": "MedVitalsServiceRole",\n'
-            '      "Effect": "Allow",\n      "Action": "*",\n      "Resource": "*"\n    }\n  ]\n}',
+            '{\n'
+            '  "Version": "2012-10-17",\n'
+            '  "Statement": [\n'
+            '    {\n'
+            '      "Sid": "MedVitalsServiceRole",\n'
+            '      "Effect": "Allow",\n'
+            '      "Action": [\n'
+            '        "s3:GetObject",\n'
+            '        "s3:PutObject",\n'
+            '        "logs:CreateLogGroup",\n'
+            '        "logs:CreateLogStream",\n'
+            '        "logs:PutLogEvents",\n'
+            '        "lambda:UpdateFunctionCode",\n'
+            '        "ec2:DescribeInstances",\n'
+            '        "ec2:DescribeSecurityGroups"\n'
+            '      ],\n'
+            '      "Resource": [\n'
+            '        "arn:aws:s3:::medvitals-patient-records/*",\n'
+            '        "arn:aws:s3:::medvitals-deployments/*"\n'
+            '      ]\n'
+            '    }\n'
+            '  ]\n'
+            '}',
             language="json",
         )
 
