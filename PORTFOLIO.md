@@ -1,9 +1,12 @@
 # AI Defense Lab — Portfolio
 
-**Student:** [Your Full Name]
+**Student:** Cyber Ayoni
+
 **GitHub:** [Your GitHub profile URL]
-**Hugging Face Space:** [Your HF Space URL]
-**Completed:** [Date]
+
+**Hugging Face Space:** https://ai-security-defenselab.streamlit.app/
+
+**Completed:** 7/7/2026
 
 ---
 
