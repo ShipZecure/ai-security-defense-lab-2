@@ -20,7 +20,7 @@ CLOUDTRAIL_LOGS = [
     {"event_time": "2026-06-30 03:02:09 UTC", "event_name": "AssumeRole",              "source_ip": "198.51.100.45", "user_agent": "python-requests/2.28.1", "identity": "medvitals-deploy-bot → arn:aws:iam::000000000000:role/AdminFullAccess"},
     {"event_time": "2026-06-30 03:02:31 UTC", "event_name": "ListBuckets",             "source_ip": "198.51.100.45", "user_agent": "python-requests/2.28.1", "identity": "medvitals-deploy-bot"},
     {"event_time": "2026-06-30 03:03:02 UTC", "event_name": "PutObject",               "source_ip": "198.51.100.45", "user_agent": "python-requests/2.28.1", "identity": "medvitals-deploy-bot"},
-    {"event_time": "2026-06-30 03:04:18 UTC", "event_name": "GetObject",               "source_ip": "198.51.100.45", "user_agent": "python-requests/2.28.1", "identity": "medvitals-deploy-bot"},
+    {"event_time": "2026-06-30 03:04:18 UTC", "event_name": "",               "source_ip": "198.51.100.45", "user_agent": "python-requests/2.28.1", "identity": "medvitals-deploy-bot"},
 ]
 
 CLOUDTRAIL_DETAILS = [
