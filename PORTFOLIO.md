@@ -47,15 +47,15 @@ For a HealthTech company handling patient data, this directly reduces HIPAA brea
 
 ## Level 2 — DataForge ML · AI Model Security
 
-**Problem:**
+Problem: DataForge ML's model loader downloaded AI model weights from an unverified Hugging Face account (logix-community) in legacy pickle format without running any integrity verification before loading into the production genomics inference pipeline. The downloaded model contained a malicious subprocess.check_output payload embedded in the serialised weight file — a MITRE ATLAS AML.T0010 supply chain compromise. Loading the model would have given an attacker shell execution access to the inference server and all connected research data.
 
-**Method:**
+Method: Audited model_loader.py and identified pickle.load() with no pre-scan verification. Audited the source Hugging Face repository and identified four supply chain risk factors: unverified publisher account, no model card, no checksum, legacy .pkl format. Ran Picklescan against the model fixture file — scan returned dangerous import 'subprocess check_output' FOUND. Replaced pickle.load() with safe_open() from the safetensors library. Added scan_model_before_loading() as a mandatory security gate that must pass before the load function executes. Changed source repository reference to a verified account.
 
-**Evidence:** [Link to commit]
+Evidence: (https://github.com/AibinuolaDamilola/ai-security-defense-lab/commit/4f8a10ed4ec7877f1b9f2442a11b228ba7ece2eb)
 
-**Outcome:**
+Outcome: The inference pipeline can no longer load a pickle-format model file. Even if a future malicious model reaches the download step, the Picklescan gate catches it and aborts before execution. The supply chain attack vector that enabled this breach no longer exists in the pipeline.
 
-**Skills:** Model Supply Chain Verification · Pickle Exploit Detection · Safetensors · Automated Model Scanning
+Skills: AI model supply chain security · Picklescan · safetensors · MITRE ATLAS AML.T0010 · Static malware analysis · CI/CD security gates
 
 **Others:**
 - [Technical write-up link]
