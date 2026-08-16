@@ -216,6 +216,18 @@ def render_level2(user, supabase_client):
             '    return {"status": "complete", "model_keys": list(model.keys())}',
             language="python",
         )
+    with tab3:
+        st.caption("This is your workspace. Open levels/level2_dataforge.py in your forked Codespace and replace this placeholder with your hardened version.")
+        st.code(
+            '# model_loader_hardened.py\n'
+            '# DataForge ML — Genomics Analysis Pipeline\n'
+            '#\n'
+            '# This is your workspace.\n'
+            '# Open levels/level2_dataforge.py in your forked Codespace.\n'
+            '# Replace this placeholder with your hardened version of model_loader.py.\n'
+            '# Your commit showing this change is your Level 2 portfolio evidence.',
+            language="python",
+        )
 
     st.markdown("---")
 
