@@ -40,9 +40,7 @@ For a HealthTech company handling patient data, this directly reduces HIPAA brea
 
 
 **Others:**
-- Technical write-up: [Medium blog post](https://medium.com/@CyberDammy/ai-security-defense-lab-part-1-bca2fc4ba074?postPublishedType=repub) 
-
-
+- Technical write-up: [medium](https://medium.com/@CyberDammy/ai-security-defense-lab-part-1-bca2fc4ba074)
 ---
 
 ## Level 2 — DataForge ML · AI Model Security
@@ -58,8 +56,7 @@ Outcome: The inference pipeline can no longer load a pickle-format model file. E
 Skills: AI model supply chain security · Picklescan · safetensors · MITRE ATLAS AML.T0010 · Static malware analysis · CI/CD security gates
 
 **Others:**
-- [Technical write-up link]
-- [LinkedIn post link]
+- Technical write-up link: [medium](https://medium.com/@CyberDammy/ai-defense-lab-level-2-walkthrough-f0f810c93e5c?postPublishedType=repub)
 
 ---
 
