@@ -1,0 +1,43 @@
+rules:
+  - id: cartbot-jwt-validation-disabled
+    languages: [python]
+    severity: ERROR
+    message: >
+      REQUIRE_JWT_VALIDATION is disabled. The API cannot cryptographically
+      verify who a request actually belongs to, which directly enables
+      Broken Object Level Authorization (OWASP API1:2023).
+    metadata:
+      owasp: "API1:2023 - Broken Object Level Authorization"
+      cwe: "CWE-306: Missing Authentication for Critical Function"
+      references:
+        - https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/
+    patterns:
+      - pattern: REQUIRE_JWT_VALIDATION = False
+
+  - id: cartbot-customer-id-header-trusted
+    languages: [python]
+    severity: ERROR
+    message: >
+      TRUST_CUSTOMER_ID_HEADER is enabled. The API accepts a client-supplied
+      customer_id at face value instead of verifying it against an
+      authenticated session — this is the direct enabler of BOLA.
+    metadata:
+      owasp: "API1:2023 - Broken Object Level Authorization"
+      cwe: "CWE-639: Authorization Bypass Through User-Controlled Key"
+      references:
+        - https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/
+    patterns:
+      - pattern: TRUST_CUSTOMER_ID_HEADER = True
+
+  - id: cartbot-rate-limiting-disabled
+    languages: [python]
+    severity: WARNING
+    message: >
+      RATE_LIMIT_ENABLED is disabled. Without throttling, a scripted attacker
+      can enumerate customer records and drive unbounded AI inference cost —
+      a Denial of Wallet risk. See MITRE ATLAS AML.T0054.
+    metadata:
+      mitre-atlas: "AML.T0054 - LLM Data Exfiltration"
+      cwe: "CWE-770: Allocation of Resources Without Limits or Throttling"
+    patterns:
+      - pattern: RATE_LIMIT_ENABLED = False
