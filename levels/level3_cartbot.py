@@ -229,7 +229,7 @@ def render_level3(user, supabase_client):
     st.markdown("**Install Semgrep:**")
     st.code("pip install semgrep", language="bash")
     st.markdown("**Run the scan:**")
-    st.code("semgrep --config=auto levels/level3_cartbot.py", language="bash")
+    st.code("semgrep --config=.semgrep.yml fixtures/level3_cartbot/api_config.py", language="bash")
     st.markdown("Look for findings related to disabled security controls (`REQUIRE_JWT_VALIDATION = False`, `RATE_LIMIT_ENABLED = False`). Note which CWE IDs appear in your output — these go into your API Security Findings Report.")
 
     st.markdown("---")
