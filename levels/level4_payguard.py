@@ -84,6 +84,7 @@ def render_level4(user, supabase_client):
             "2. How would you apply STRIDE to a RAG pipeline?\n"
             "3. What is indirect prompt injection and how is it different from direct injection?\n"
             "4. How does a vector database introduce new security risks compared to SQL?"
+            "5. jhkllllllllllllllllll\n"
         )
 
     st.markdown("---")
