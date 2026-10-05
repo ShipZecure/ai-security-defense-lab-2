@@ -292,7 +292,12 @@ def render_level5(user, supabase_client):
     st.markdown("#### MAESTRO Threat Model")
     st.caption("All seven layers. Some will correctly come back 'not applicable to this incident' — that's part of the exercise.")
     maestro_layers = ["L1 — Foundation Models", "L2 — Data Operations", "L3 — Agent Frameworks", "L4 — Deployment & Infrastructure", "L5 — Evaluation & Observability", "L6 — Security & Compliance", "L7 — Agent Ecosystem"]
-    rows_html = "".join(f'<tr style="border-bottom:1px solid #F1F5F9;"><td style="padding:10px 14px;color:#374151;font-weight:500;">{layer}</td><td style="padding:10px 14px;color:#6B7280;"></td></tr>' for layer in maestro_layers)
+    maestro_findings = [
+        "This is where the goal hijack happens. The model reads the citizen comment together with its own instructions and has no reliable way to separate data from commands, so a hidden directive redirects what the agent is trying to do (ASI01). A guardrail such as Llama Guard can flag some attacks, but its verdicts vary between runs and between rewordings, so the model layer cannot be the main defense.",
+        "Mostly not applicable. No training data, vector store or data pipeline is involved in this incident. The one link is input handling: the citizen comment is untrusted outside data that enters the agent context with no sanitization (SANITIZE_CITIZEN_INPUT = False), so it can be read as instructions instead of as data.",
+        "The agent framework lets a hijacked goal turn into a real tool call with no check in between. LegalBot holds the finalize and dismiss tool as a standing permission (CAN_FINALIZE_DISMISSAL = True) and nothing requires a human to approve the call (REQUIRE_HUMAN_APPROVAL = False). Tool misuse and privilege abuse (ASI02, ASI03) happen here.",
+    ]
+    rows_html = "".join(f'<tr style="border-bottom:1px solid #F1F5F9;"><td style="padding:10px 14px;color:#374151;font-weight:500;">{layer}</td><td style="padding:10px 14px;color:#6B7280;">{maestro_findings[n] if n < len(maestro_findings) else ""}</td></tr>' for n, layer in enumerate(maestro_layers))
     st.markdown(
         '<div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:20px;margin-top:12px;">' +
         '<div style="font-size:13px;font-weight:600;color:#1E293B;margin-bottom:16px;">LegalBot Municipal — MAESTRO Threat Model</div>' +
